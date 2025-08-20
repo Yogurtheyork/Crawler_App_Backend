@@ -1,0 +1,32 @@
+# 排除不需要的檔案來加速 Docker 構建
+.git
+.gitignore
+README.md
+RAILWAY_DEPLOYMENT.md
+.env
+.env.*
+
+# IDE 檔案
+.idea/
+.vscode/
+*.iml
+
+# 構建產物
+build/
+.gradle/
+
+# 測試和報告
+test-results/
+reports/
+
+# 臨時檔案
+.tmp/
+*.log
+*.tmp
+
+# Railway 配置檔案（備份）
+railway.yml.backup
+
+# OS 檔案
+.DS_Store
+Thumbs.db
