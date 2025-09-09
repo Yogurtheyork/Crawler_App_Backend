@@ -1,0 +1,17 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+      database: ${MONGO_DATABASE}
+      authentication-database: ${MONGO_AUTH_DB}
+
+server:
+  port: ${PORT:8080}
+
+app:
+  cors:
+    allowed-origins: ${ALLOWED_ORIGINS}
+
+logging:
+  level:
+    org.springframework.data.mongodb: INFO

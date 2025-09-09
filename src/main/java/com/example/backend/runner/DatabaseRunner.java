@@ -19,7 +19,6 @@ public class DatabaseRunner implements ApplicationRunner{
     }
     @Override
     public void run(org.springframework.boot.ApplicationArguments args) throws IOException {
-        sightRepository.deleteAll(); // Clear the database before inserting new data
         for (String zone : new String[]{"中山", "信義", "仁愛", "安樂", "中正", "暖暖", "七堵"}) {
             try {
                 System.out.println("Fetching sights for zone: " + zone);
