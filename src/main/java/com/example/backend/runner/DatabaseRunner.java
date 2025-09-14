@@ -19,18 +19,15 @@ public class DatabaseRunner implements ApplicationRunner{
     }
     @Override
     public void run(org.springframework.boot.ApplicationArguments args) throws IOException {
+        sightRepository.deleteAll();
         for (String zone : new String[]{"中山", "信義", "仁愛", "安樂", "中正", "暖暖", "七堵"}) {
-            try {
-                System.out.println("Fetching sights for zone: " + zone);
-                var sights = sightCrawler.getItems(zone);
-                for (var sight : sights) {
-                    System.out.println("Saving sight: " + sight.getSightName());
-                    sightRepository.save(sight);
-                }
-                System.out.println("Finished fetching sights for zone: " + zone);
-            } catch (IOException e) {
-                System.err.println("Error fetching sights for zone: " + zone);
+            System.out.println("Fetching sights for zone: " + zone);
+            var sights = sightCrawler.getItems(zone);
+            for (var sight : sights) {
+                System.out.println("Saving sight: " + sight.getSightName());
+                sightRepository.save(sight);
             }
+            System.out.println("Finished fetching sights for zone: " + zone);
         }
         System.out.println("All sights have been fetched and saved to the database.");
     }

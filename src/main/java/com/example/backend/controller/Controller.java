@@ -35,9 +35,18 @@ public class Controller {
             @RequestParam(value = "zone", required = true) String zone
     ) throws IOException {
         List<Sight> sights = sightRepository.findByZone(zone + "區");
-        return sights == null
-                ? ResponseEntity.notFound().build()
-                : ResponseEntity.ok(sights);
+
+        if (sights == null || sights.isEmpty()) {
+            KeelungSightsCrawler crawler = new KeelungSightsCrawler();
+            Sight[] newSights = crawler.getItems(zone);
+
+            // Save new sights and return them
+            return ResponseEntity.ok(
+                sightRepository.saveAll(List.of(newSights))
+            );
+        }
+
+        return ResponseEntity.ok(sights);
     }
 
     @GetMapping("/SightAPI/testDB")
