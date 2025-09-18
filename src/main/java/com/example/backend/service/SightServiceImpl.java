@@ -37,6 +37,17 @@ public class SightServiceImpl implements SightService {
     }
 
     @Override
+    public void refreshDatabase() {
+        if (sightRepository.count() == 0) {
+            try {
+                initializeDatabase();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
     public void saveSight(Sight sight) {
         sightRepository.save(sight);
     }

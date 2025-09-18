@@ -23,6 +23,7 @@ public class Controller {
             @RequestParam(value = "zone", required = true) String zone
     ) {
         try {
+            sightService.refreshDatabase();
             List<Sight> sight = sightService.getSightsByZone(zone + "區");
             if(sight.isEmpty()){
                 return ResponseEntity.notFound().build();

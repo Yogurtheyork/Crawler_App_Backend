@@ -8,5 +8,6 @@ public interface SightService {
     void initializeDatabase() throws IOException;
     void saveSight(Sight sight);
     void deleteAllSights();
+    void refreshDatabase();
     List<Sight> getSightsByZone(String zone);
 }

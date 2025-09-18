@@ -6,7 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "sights")
 public class Sight implements java.io.Serializable{
 
-
     public Sight(){}
     ///  Attributes
     @Id
