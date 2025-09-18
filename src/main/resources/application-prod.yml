@@ -6,7 +6,7 @@ spring:
       authentication-database: ${MONGO_AUTH_DB}
 
 server:
-  port: ${PORT:8080}
+  port: ${PORT}
 
 app:
   cors:

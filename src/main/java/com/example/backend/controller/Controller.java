@@ -18,6 +18,11 @@ public class Controller {
     @Autowired
     private SightServiceImpl sightService;
 
+    @GetMapping("/health")
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("Service is running");
+    }
+
     @GetMapping("/SightAPI")
     public ResponseEntity<List<Sight>> sightStatus(
             @RequestParam(value = "zone", required = true) String zone
